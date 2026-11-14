@@ -6,7 +6,7 @@ After the last topic, start a new cycle of fresh angles: troubleshooting, FAQs, 
 
 ## Rules
 - Check every step against an official source on the day of writing: the OduwaCoin GitHub README, release notes and docs, the live oduwacoin.io, oduwastakingpool.com and OduwaPay pages, and the public explorers. If a step can't be confirmed, leave it out or label it clearly. Never invent menu names, fees, rates, minimums or rewards.
-- Educational only. No price predictions, guaranteed returns or investment advice. Include the risk note and the disclosure line.
+- Educational only. No price predictions, guaranteed returns or investment advice. Include the risk note and the disclosure line: "Disclosure: Fintech Telex and OduwaCoin share common ownership."
 - Safety first in every guide: back up wallet.dat, never share private keys or recovery phrases, check SHA-256 checksums, and use only official links.
 
 ## Topics
