@@ -108,7 +108,7 @@ seo_title="Bitcoin Hits Four-Month Low Near $62,000, Then Rebounds",
 desc="Bitcoin fell below $62,000 for the first time since July, then rebounded to about $65,000. What drove the selloff and what African traders should watch.",
 tags=["Bitcoin","BTC","Crypto Market","Ether","XRP","Stablecoins","Bitcoin ETF","Crypto Selloff","Fear and Greed Index","Binance","Crypto News","Africa Crypto"],
 html=f"""
-<p>Bitcoin slid below $62,000 over the weekend for the first time since July, extending a week-long selloff, before buyers pushed it back to roughly $65,000 by Sunday evening.</p>
+<p>Bitcoin slid below $62,000 over the weekend for the first time since July, extending a week-long selloff, before buyers pushed it back to roughly $65,000 by Sunday evening. The move deepens the slide <a href="https://fintechtelex.com/bitcoin-falls-below-69000-liquidations-extreme-fear/">Fintech Telex reported on Friday</a>, and follows US action over the <a href="https://fintechtelex.com/us-freezes-2-7-billion-binance-hack-north-korea-seizure/">Binance hack proceeds</a>.</p>
 
 <p>The world's largest cryptocurrency touched about $61,950 on major US exchanges late on Saturday, around 8:45 p.m. US Eastern time, its lowest level since July 13, <a href="https://cryptobriefing.com/bitcoin-price-volatility-below-62000-recovery/" {A}>Crypto Briefing reported</a> using Coinbase prices. That left it about 13% below its November 8 close of $74,754 and roughly 51% below its all-time high of $126,296 set in October 2025.</p>
 
@@ -457,6 +457,59 @@ html=f"""
 <li>The full tracklist and credits when the soundtrack drops on November 20.</li>
 <li>Streaming and chart performance for "African Love Story" in Africa, the UK and the US.</li>
 <li>Release plans for the film in African cinemas ahead of January 15.</li>
+</ul>
+"""),
+# ---------------------------------------------------------------- 11 SPORTS
+dict(
+slot="Sports", label="SPORTS", cats=[7],
+slug="zimbabwe-cameroon-senegal-win-afcon-2027-qualifiers-november-16",
+title="Zimbabwe, Cameroon and Senegal Win as AFCON 2027 Qualifiers Resume",
+excerpt="Zimbabwe thrashed Equatorial Guinea 3-0 in Harare, Cameroon won 3-0 against Namibia in Gaborone and Senegal beat Sudan 4-2 in Juba on Monday, ahead of Nigeria's trip to Zanzibar on Tuesday.",
+kw="AFCON 2027 qualifiers, Zimbabwe vs Equatorial Guinea, Namibia vs Cameroon, Sudan vs Senegal, Tanzania vs Nigeria",
+seo_title="Zimbabwe, Cameroon, Senegal Win in AFCON 2027 Qualifiers",
+desc="Zimbabwe beat Equatorial Guinea 3-0, Cameroon won 3-0 in Gaborone and Senegal beat Sudan 4-2 in AFCON 2027 qualifying, with Nigeria up next in Zanzibar.",
+tags=["AFCON 2027","AFCON Qualifiers","Zimbabwe Warriors","Cameroon","Indomitable Lions","Senegal","Namibia","Sudan","Equatorial Guinea","Super Eagles","African Football","Sports"],
+html=f"""
+<p>Zimbabwe, Cameroon and Senegal all won on Monday as matchday four of the 2027 Africa Cup of Nations qualifiers got under way, with three teams tightening their grip on places at the finals in Kenya, Tanzania and Uganda.</p>
+
+<h2>Zimbabwe 3-0 Equatorial Guinea</h2>
+
+<p>Four days after a goalless draw in Yaoundé, Zimbabwe's Warriors beat Equatorial Guinea 3-0 at the National Sports Stadium in Harare, according to <a href="https://www.espn.com/soccer/match/_/gameId/401927173/equatorial-guinea-zimbabwe" {A}>ESPN's match report</a>. Thandolwenkosi Ngwenya scored in the fourth minute, and second-half goals from Tawanda Chirewa (71st minute) and substitute Tawanda Maswanhise (78th) settled it. Goalkeeper Nelson Chadya, the hero of Thursday's draw, kept another clean sheet.</p>
+
+<p>The win takes Zimbabwe to seven points in Group E, three clear of Equatorial Guinea and two behind leaders DR Congo, who visit Sierra Leone on Tuesday.</p>
+
+<h2>Namibia 0-3 Cameroon</h2>
+
+<p>Cameroon made it two wins in four days over Namibia, winning 3-0 in the reverse fixture, played at the Botswana National Stadium in Gaborone, <a href="https://www.espn.com/soccer/match/_/gameId/401927170/cameroon-namibia" {A}>ESPN reported</a>. Mahamadou Nagida opened the scoring after 12 minutes, substitute Ryan Fosso added a second on 58 minutes, and Saidou Alioum Moubarak, who also scored in Thursday's 2-0 win, struck again on 71 minutes.</p>
+
+<p>The Indomitable Lions are unbeaten and move to 10 points in Group G, six ahead of Comoros, who host Congo on Tuesday. Namibia stay on three points.</p>
+
+<h2>Sudan 2-4 Senegal</h2>
+
+<p>Senegal won a lively match against Sudan 4-2 in Juba, South Sudan, where Sudan play their home games, according to <a href="https://www.espn.com/soccer/match/_/gameId/401927135/senegal-sudan" {A}>ESPN</a>. Nicolas Jackson scored after four minutes and El Hadji Malick Diouf doubled the lead on 22 minutes. Sudan fought back in the second half through Al-Gozoli Nooh (52nd) and Salaheldin Adil (75th), but Pathé Mboup, who also scored on his debut in Thursday's 4-1 win in Dakar, restored the lead on 87 minutes and Paul Mendy added a fourth in stoppage time.</p>
+
+<p>Patrick Vieira's side have 10 points from four matches and lead Group J, with Sudan on three.</p>
+
+<h2>Still to come on Monday</h2>
+
+<p>Ghana were playing Somalia at publication time, with Central African Republic v Benin and Eritrea v Guinea kicking off at 16:00 GMT, according to <a href="https://www.riotimesonline.com/afcon-2027-guide-kenya-uganda-tanzania/" {A}>The Rio Times' fixture list</a>. Ghana are chasing a second straight win over Somalia after <a href="https://www.bbc.com/sport/football/articles/c61md0mldvdgo" {A}>BBC Sport</a> reported their 2-0 first-leg victory ended a long wait for a qualifying win.</p>
+
+<h2>Tuesday: Nigeria in Zanzibar</h2>
+
+<p>Nigeria travel to face Tanzania in Zanzibar on Tuesday at 13:00 GMT, four days after beating the co-hosts 3-1 at home. The Super Eagles are without Ademola Lookman and Victor Osimhen, as <a href="https://fintechtelex.com/lookman-ruled-out-tanzania-salah-record-afcon-qualifiers/">Fintech Telex reported on Sunday</a>. Nigeria sit on six points, one behind Group L leaders Guinea-Bissau, who host Madagascar later on Tuesday.</p>
+
+<p>Also on Tuesday, Kenya host South Africa in Nairobi after Friday's 2-2 draw, and Morocco visit Niger.</p>
+
+<h2>What it means for African readers</h2>
+
+<p>For fans in Harare, Yaoundé and Dakar, Monday's wins put qualification within reach with two rounds of group matches still to play. For Nigerian supporters, the stakes on Tuesday are clear: a win in Zanzibar would keep pressure on Guinea-Bissau, while a defeat would make the final two matchdays far harder. The finals run from June 19 to July 17, 2027.</p>
+
+<h2>What to watch</h2>
+
+<ul>
+<li>Late results from Somalia v Ghana, CAR v Benin and Eritrea v Guinea.</li>
+<li>Tanzania v Nigeria and Guinea-Bissau v Madagascar in Group L on Tuesday.</li>
+<li>Kenya v South Africa in Nairobi.</li>
 </ul>
 """),
 ]
