@@ -108,3 +108,4 @@ Segments with ad budgets aimed at African and diaspora readers. Contacts to be c
 ## Pricing decision (Nov 16, 2026)
 - Rates approved and quoted in US dollars only.
 - Payment methods: PayPal (USD invoice) or OduwaCoin (OWC), with the OWC amount set from the CoinGecko OWC/USD price on the invoice date (quote valid 24 hours). The page discloses common ownership with OduwaCoin.
+- Nov 16, 2026: "Advertise With Us" page published at https://fintechtelex.com/advertise/ (WP page 5402). The old 2023 Elementor page (ID 2) was moved to draft as advertise-2023-archive; a backup is in business/backups/.
