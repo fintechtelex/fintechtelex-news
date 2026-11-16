@@ -32,8 +32,8 @@ Thank you for thinking of Fintech Telex.
 
 Your piece reads as promotional rather than independent editorial, so it would run in our labelled Partner Content section. The options are:
 
-- Press release, published as supplied after an editorial check: $60 / ₦90,000
-- Sponsored article, edited by our desk with homepage placement: $120 / ₦180,000
+- Press release, published as supplied after an editorial check: $60
+- Sponsored article, edited by our desk with homepage placement: $120
 
 If you'd prefer free publication, we'd need a non-promotional piece (an independent analysis or expert opinion without product calls to action) that meets our editorial standards.
 
@@ -51,7 +51,7 @@ Hi {first name},
 
 Fintech Telex (fintechtelex.com) is an Africa- and diaspora-focused news platform publishing 12 stories a day on fintech, crypto, business and Nigeria news. We'd like to be included in your list of placement outlets for client press releases and sponsored posts.
 
-Our agency rates: press release $60 / ₦90,000, sponsored article $120 / ₦180,000, with standard agency discounts available for volume. Turnaround is 24–48 hours after payment.
+Our agency rates: press release $60, sponsored article $120, with standard agency discounts available for volume. Turnaround is 24–48 hours after payment.
 
 Could you add us, or let me know what you need to list a new outlet?
 

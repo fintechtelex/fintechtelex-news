@@ -103,3 +103,8 @@ Segments with ad budgets aimed at African and diaspora readers. Contacts to be c
 - Every paid item is labelled, and news coverage of a sponsor stays independent.
 - OduwaCoin content remains disclosed ("Fintech Telex and OduwaCoin share common ownership") and is never presented as paid third-party sponsorship.
 - No outreach email, page publication or payment setup happens without your approval.
+
+
+## Pricing decision (Nov 16, 2026)
+- Rates approved and quoted in US dollars only.
+- Payment methods: PayPal (USD invoice) or OduwaCoin (OWC), with the OWC amount set from the CoinGecko OWC/USD price on the invoice date (quote valid 24 hours). The page discloses common ownership with OduwaCoin.
