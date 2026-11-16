@@ -1,0 +1,69 @@
+<p>Before you install any crypto wallet, you should be sure the file you downloaded is the genuine one. Fake wallet downloads are one of the most common ways people lose coins. This second Fintech Spotlight guide shows you, step by step, how to download OduwaCoin Core ETINOSA v2.0.0.3 from its official GitHub page and confirm the file is authentic by checking its SHA-256 checksum. It takes about 10 minutes and works on Windows, macOS and Linux.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>A Windows 10/11 (64-bit), macOS or Linux computer</li>
+<li>A stable internet connection (the wallet downloads are between about 8 MB and 27 MB)</li>
+<li>About 10 minutes</li>
+<li>No coding experience: you will copy and paste one short command</li>
+</ul>
+
+<h2>What is a SHA-256 checksum?</h2>
+<p>A checksum is a 64-character fingerprint calculated from every byte of a file. If even one byte changes, whether through a corrupted download or a tampered file, the fingerprint changes completely. The OduwaCoin developers publish the correct fingerprint for every download in a small file called <code>SHA256SUMS</code>. You calculate the fingerprint of your own download and compare the two. If they match exactly, you have the genuine file.</p>
+
+<h2>Step 1: Open the official release page</h2>
+<p>Go to the <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">OduwaCoin Core v2.0.0.3 release page on GitHub</a>. Check the address bar: it should read <strong>github.com/ODUWAX/oduwacoin</strong>. The release is titled "Oduwacoin-v2.0.0.3-ETINOSA" and was published on November 2, 2026. Do not use download links sent to you in chats, emails or social media comments.</p>
+
+<h2>Step 2: Pick the right file for your computer</h2>
+<p>Scroll to the "Assets" section. According to the official release notes, the files are:</p>
+<ul>
+<li><strong>Windows 10/11 (64-bit):</strong> <code>OduwaCoin-2.0.0.3-win64.zip</code> (wallet app plus daemon, command-line and transaction tools)</li>
+<li><strong>Mac with Apple Silicon (M1 or later), macOS 11+:</strong> <code>OduwaCoin-2.0.0.3-macOS-arm64.dmg</code></li>
+<li><strong>Mac with Intel processor, macOS 10.15+:</strong> <code>OduwaCoin-2.0.0.3-macOS-x86_64.dmg</code></li>
+<li><strong>Linux desktop (Ubuntu 20.04+ and similar):</strong> <code>OduwaCoin-2.0.0.3-linux.tar.gz</code></li>
+<li><strong>Servers:</strong> <code>OduwaCoin-2.0.0.3-ubuntu-daemon.tar.gz</code> for Linux, or the macOS daemon files</li>
+</ul>
+<p>Not sure which Mac you have? Click the Apple menu, then "About This Mac." If it lists an "Apple M" chip, choose arm64; if it lists Intel, choose x86_64.</p>
+
+<h2>Step 3: Download the SHA256SUMS file too</h2>
+<p>In the same Assets list, download <code>SHA256SUMS</code>. Save it in the same folder as your wallet download, usually your Downloads folder. Open it with any text editor: each line shows a 64-character fingerprint followed by a file name.</p>
+
+<h2>Step 4: Calculate your file's fingerprint</h2>
+<p><strong>On Windows:</strong> open the Start menu, type "PowerShell" and open it. Then run:</p>
+<pre><code>cd $HOME\Downloads
+Get-FileHash .\OduwaCoin-2.0.0.3-win64.zip -Algorithm SHA256</code></pre>
+<p><strong>On macOS:</strong> open Terminal (Applications, then Utilities) and run the line for your file, for example:</p>
+<pre><code>cd ~/Downloads
+shasum -a 256 OduwaCoin-2.0.0.3-macOS-arm64.dmg</code></pre>
+<p><strong>On Linux:</strong> open a terminal in the download folder and let the system compare automatically:</p>
+<pre><code>sha256sum -c SHA256SUMS --ignore-missing</code></pre>
+<p>On Linux, a line ending in <strong>OK</strong> means the file is verified.</p>
+
+<h2>Step 5: Compare the two fingerprints</h2>
+<p>On Windows and macOS, compare the long string your computer printed with the line for the same file name in <code>SHA256SUMS</code>. Every character must match. Windows shows the hash in capital letters and the file uses lower case; that difference does not matter. As an example, Fintech Telex downloaded the Windows file on November 16, 2026 and its fingerprint began <code>ca3dc572</code> and ended <code>c52612</code>, matching the official list. Always check against the official file, not this article.</p>
+<p>If the fingerprints match, you can move on to installation. If they do not, delete the download and start again from Step 1.</p>
+
+<h2>Step 6: A bonus check for Mac users</h2>
+<p>The release notes say the Mac apps are signed by ODUWA BLOCKCHAIN SOLUTIONS LLC and notarized by Apple, so they should open without security warnings. If macOS warns that the app is from an unidentified developer or is damaged, stop and re-check your download.</p>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Bookmark the official <a href="https://github.com/ODUWAX/oduwacoin/releases" target="_blank" rel="noopener">OduwaCoin GitHub releases page</a> and use it every time.</li>
+<li>Never download wallet software from ads, file-sharing sites or links sent by strangers.</li>
+<li>If you are upgrading, back up your existing <code>wallet.dat</code> before installing. The release notes say v2.0.0.3 keeps the same wallet format, so existing wallet files work unchanged.</li>
+<li>No genuine OduwaCoin support person will ask for your wallet password, private keys or wallet.dat file.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>"Cannot find path" or "No such file":</strong> you are in the wrong folder, or the file name is different. Type the first few letters of the file name and press Tab to auto-complete it.</p>
+<p><strong>The fingerprints do not match:</strong> the download may be incomplete. Delete it, download again on a stable connection, and re-check. If it still does not match, do not install it and report it through the official repository.</p>
+<p><strong>Linux says "no properly formatted checksum lines found":</strong> make sure you downloaded the raw <code>SHA256SUMS</code> file from the Assets list, not a web page.</p>
+
+<h2>FAQ</h2>
+<p><strong>Do I need to verify if I downloaded from GitHub?</strong><br>Yes. Checking takes a minute and protects you from corrupted files and from fake pages that copy GitHub's look.</p>
+<p><strong>Is v2.0.0.3 compatible with older wallets?</strong><br>Yes. The release notes say there are no consensus or network protocol changes, so v2.0.0.2 nodes and wallets remain fully compatible.</p>
+<p><strong>Can I verify the blockchain bootstrap file the same way?</strong><br>Yes. <code>OduwaCoin-DB.zip</code> has its own checksum in <code>SHA256SUMS</code> and in <code>OduwaCoin-DB.zip.sha256</code>. A later guide covers syncing with the bootstrap.</p>
+<p><strong>What's next in this series?</strong><br>Tomorrow: how to install OduwaCoin Core on Windows 64-bit.</p>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
