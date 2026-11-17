@@ -1,0 +1,83 @@
+<p>You have downloaded OduwaCoin Core and confirmed its SHA-256 checksum. Now it is time to install it. This third Fintech Spotlight guide walks Windows users through setting up OduwaCoin Core ETINOSA v2.0.0.3 on a 64-bit Windows 10 or Windows 11 PC, from unzipping the download to opening the wallet for the first time. It takes about 15 minutes, plus time for the blockchain to sync.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>A Windows 10 or Windows 11 PC (64-bit)</li>
+<li>The file <code>OduwaCoin-2.0.0.3-win64.zip</code> from the <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">official v2.0.0.3 release page on GitHub</a>, already checked against <code>SHA256SUMS</code>. If you have not done this yet, follow <a href="https://fintechtelex.com/fintech-spotlight-download-oduwacoin-core-verify-sha256/">yesterday's guide on downloading and verifying OduwaCoin Core</a> first.</li>
+<li>At least 5 GB of free disk space. The wallet's first-run screen asks for at least 5 GB, and the blockchain grows over time.</li>
+<li>A stable internet connection</li>
+</ul>
+
+<h2>Is it an installer or a zip?</h2>
+<p>The Windows download is a zip archive, not a setup wizard. There is nothing to "install" in the traditional sense: you unzip it and run the program. We opened the official zip to confirm its contents. It holds four files:</p>
+<ul>
+<li><code>oduwacoin-qt.exe</code>: the desktop wallet with a graphical interface. This is the one most people need.</li>
+<li><code>oduwacoind.exe</code>: the background node (daemon) for advanced users and servers</li>
+<li><code>oduwacoin-cli.exe</code>: a command-line tool for sending commands to a running node</li>
+<li><code>oduwacoin-tx.exe</code>: a tool for creating and editing raw transactions</li>
+</ul>
+<p>The release notes confirm that the Windows download now includes the daemon, command-line and transaction tools as well as the wallet app.</p>
+
+<h2>Step 1: Confirm the checksum one more time</h2>
+<p>Open PowerShell in your Downloads folder and run:</p>
+<pre><code>Get-FileHash .\OduwaCoin-2.0.0.3-win64.zip -Algorithm SHA256</code></pre>
+<p>The result must match the line for <code>OduwaCoin-2.0.0.3-win64.zip</code> in <code>SHA256SUMS</code> exactly. On the day we wrote this guide, that value was:</p>
+<pre><code>ca3dc572ba625ce53aec4d209ef53c22bb623ccf522cb52f142fb39f51c52612</code></pre>
+<p>Always compare against the <code>SHA256SUMS</code> file on the official release page rather than a value copied from any article, including this one. If they do not match, stop and download again.</p>
+
+<h2>Step 2: Unzip to a permanent folder</h2>
+<ol>
+<li>Create a folder for the program, for example <code>C:\OduwaCoin</code>.</li>
+<li>Right-click <code>OduwaCoin-2.0.0.3-win64.zip</code> and choose <strong>Extract All</strong>.</li>
+<li>Click <strong>Browse</strong>, select your new folder, then click <strong>Extract</strong>.</li>
+</ol>
+<p>Do not run the wallet from inside the zip file or from a temporary folder. Keep the four files together in one place.</p>
+
+<h2>Step 3: Start the wallet</h2>
+<p>Open the folder and double-click <code>oduwacoin-qt.exe</code>.</p>
+<p><strong>If Windows shows "Windows protected your PC":</strong> Microsoft Defender SmartScreen often warns about programs it does not yet recognise. When we inspected the official v2.0.0.3 Windows files, they did not carry a Windows code-signing certificate (the release notes mention signing only for the Mac apps), so this warning is likely. Only if your checksum matched in Step 1, click <strong>More info</strong>, then <strong>Run anyway</strong>. If the checksum did not match, do not run the file.</p>
+
+<h2>Step 4: Choose where your data is stored</h2>
+<p>On first launch, a <strong>Welcome</strong> window asks where OduwaCoin Core should store its data. You can choose:</p>
+<ul>
+<li><strong>Use the default data directory</strong>: recommended for most people. On Windows this is <code>C:\Users\YourName\AppData\Roaming\OduwaCoin</code>, according to the OduwaCoin Core source code.</li>
+<li><strong>Use a custom data directory</strong>: useful if your C: drive is small and you want the blockchain on another drive.</li>
+</ul>
+<p>This folder holds the blockchain, your settings and, most importantly, your <code>wallet.dat</code> file. Write the location down. Click <strong>OK</strong> to continue.</p>
+
+<h2>Step 5: Allow network access and let it sync</h2>
+<p>Windows Defender Firewall may ask whether to allow OduwaCoin Core to communicate on networks. Allow it on <strong>private networks</strong> so the wallet can connect to peers. The wallet then starts downloading the blockchain and shows a progress window with the number of blocks left and the estimated time remaining. Your balance and recent transactions may not be accurate until syncing finishes.</p>
+<p>Syncing from scratch can take a long time. The v2.0.0.3 release also offers a verified blockchain bootstrap, <code>OduwaCoin-DB.zip</code> (1.62 GB, blocks up to height 2,514,711), that lets you skip most of the download. A later Spotlight guide covers it step by step.</p>
+
+<h2>Step 6: Back up your wallet right away</h2>
+<p>Once the wallet opens, protect it before you receive any coins:</p>
+<ol>
+<li>Go to <strong>File</strong> and choose <strong>Backup Wallet</strong>.</li>
+<li>Save the copy to a USB drive or another safe location that is not on the same computer.</li>
+<li>Keep at least one backup offline.</li>
+</ol>
+<p>If your computer fails and you have no backup of <code>wallet.dat</code>, your coins cannot be recovered. Encrypting the wallet with a passphrase is covered in a later guide.</p>
+
+<h2>Optional: create a desktop shortcut</h2>
+<p>Right-click <code>oduwacoin-qt.exe</code>, choose <strong>Show more options</strong> on Windows 11 if needed, then <strong>Send to</strong> and <strong>Desktop (create shortcut)</strong>.</p>
+
+<h2>Upgrading from v2.0.0.2</h2>
+<p>The release notes say v2.0.0.3 has no consensus or network protocol changes, and existing <code>wallet.dat</code> files work unchanged. To upgrade: back up <code>wallet.dat</code>, close the old wallet completely (File, then Exit), extract the new files to your program folder, and start the new <code>oduwacoin-qt.exe</code>. It uses the same data directory, so your wallet and blockchain stay in place.</p>
+
+<h2>Troubleshooting</h2>
+<p><strong>"Extract All" is missing:</strong> make sure the download finished and the file name ends in <code>.zip</code>. Right-click the file and look under "Show more options" on Windows 11.</p>
+<p><strong>The wallet shows no connections:</strong> check that your firewall allowed it and that your internet connection works. A later guide covers adding peers.</p>
+<p><strong>Not enough disk space:</strong> choose a custom data directory on a larger drive at the Welcome screen.</p>
+
+<h2>Safety checklist</h2>
+<ul>
+<li>Download only from github.com/ODUWAX/oduwacoin and verify the checksum every time.</li>
+<li>Never share your private keys, <code>wallet.dat</code> file or passphrase with anyone, including people claiming to be support staff.</li>
+<li>Keep regular, offline backups of <code>wallet.dat</code>.</li>
+</ul>
+
+<h2>What's next</h2>
+<p>Tomorrow: how to install OduwaCoin Core on macOS, for both Apple Silicon and Intel Macs.</p>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
