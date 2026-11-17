@@ -433,3 +433,46 @@ html=f"""
 <p>Final-round voting by Recording Academy members runs from December 10, 2026, to January 7, 2027, <a href="https://citizen.digital/article/nigerian-afrobeats-stars-lead-african-contingent-at-2027-grammy-nominations-n394039" {A}>Citizen Digital reported</a>. The 69th Grammy Awards take place on February 7, 2027, at Crypto.com Arena in Los Angeles. British singer Raye leads the overall field with 11 nominations, followed by Spain's Rosalía with nine.</p>
 """),
 ]
+
+# ---------------------------------------------------------------- SPORTS (added after the Zanzibar match ran late)
+SPORTS = dict(
+slot="Sports", label="SPORTS", cats=[7],
+slug="caf-awards-2026-womens-nominees-busari-as-far-sundowns-lagos",
+title="CAF Awards 2026: Nigeria's Busari Among Coach Nominees as Women's Shortlists Close",
+excerpt="CAF has named the final three women's shortlists for its 2026 awards in Lagos. Flamingos coach Akeem Busari is up for Coach of the Year, and AS FAR, Mamelodi Sundowns and Lekié FF dominate the club lists.",
+kw="CAF Awards 2026, CAF Women's Coach of the Year, Akeem Busari, AS FAR, Mamelodi Sundowns, CAF Awards Lagos",
+seo_title="CAF Awards 2026: Busari Nominated as Women's Lists Close",
+desc="CAF has completed its 2026 award nominations. Nigeria's Akeem Busari is up for Women's Coach of the Year ahead of the December 2 ceremony in Lagos.",
+tags=["CAF Awards 2026","CAF","Women's Football","Akeem Busari","Flamingos","AS FAR","Mamelodi Sundowns","Lekie FF","CAF Women's Champions League","Lagos","African Football","Sports"],
+html=f"""
+<p>The Confederation of African Football (CAF) has completed the shortlists for its 2026 awards, naming the nominees for the last three women's categories on Tuesday. Nigeria's under-17 women's coach Akeem Busari is among them, two weeks before the ceremony comes to Lagos.</p>
+
+<p>The <a href="https://www.cafonline.com/news/caf-announces-nominees-for-final-three-womens-categories-for-caf-awards-2026-in-lagos-including-club-player-of-the-year-and-women-s-coach-of-the-year/" {A}>CAF announcement</a> covers Women's Interclub Player of the Year, Women's Coach of the Year and Women's Club of the Year. CAF said it held these three back so that performances at the CAF Women's Champions League, which ended in Egypt on Sunday, 15 November, could count.</p>
+
+<h2>Busari on a 10-name coaching list</h2>
+
+<p>Busari's nomination follows the Flamingos' first FIFA Under-17 Women's World Cup title. <a href="https://www.okaynews.com/flamingos-coach-busari-earns-2026-caf-award-nomination/" {A}>Okay News reported</a> that the Nigeria Football Federation called it the first time an African country had won the tournament. The federation said the team lost its opening game and then won its next six.</p>
+
+<p>He faces strong competition. The other nominees are Farid Benstiti (Algeria), Silveria Nedio (Cabo Verde), Valentine Nguele (Cameroon), Kim Lars Bjorkegren (Ghana), Lovemore Fazili (Malawi), Hicham Drissi (AS FAR), Jorge Vilda (Morocco), Desiree Ellis (South Africa) and Bakari Nyundo Shime (Tanzania).</p>
+
+<h2>AS FAR and Sundowns lead the club categories</h2>
+
+<p>Morocco's AS FAR feature heavily after beating Mamelodi Sundowns 3-1 in the Champions League final in Ismailia. CAF says that made them the first club to successfully defend the women's title. Four AS FAR players are nominated for Interclub Player of the Year: captain Ghizlane Chebbak, who was named the tournament's best player; goalkeeper Khadija Er-Rmichi, its best goalkeeper; Imane Touriss, who scored twice in the final; and Fatima Tagnaout.</p>
+
+<p>Sundowns have three nominees: Lebohang Ramalepe, Karabo Dhlamini and Ronnel Donnelly. CAF highlighted Donnelly's first-half hat-trick in the 4-1 semi-final win over Uganda's Kawempe Muslim Ladies.</p>
+
+<p>Cameroon's Lekié FF also have three nominees, Charlene Meyong, Orline Segning and Prisca Mache Talla, after a debut campaign that ended in bronze with a 5-0 win over Kawempe. Kawempe's Agnes Nabukenya completes the 11-player list.</p>
+
+<p>Eight teams are up for Women's Club of the Year: Lekié FF, FC Masar (Egypt), USFAS (Mali), AS FAR, FUS Rabat (Morocco), Ampem Darkoa (Ghana), Mamelodi Sundowns and Kawempe Muslim Ladies. <a href="https://africasoccer.com/caf-announces-womens-club-of-the-year-award-nominees/" {A}>AfricaSoccer.com noted</a> that all eight played in this year's Champions League in Egypt, and called Ampem Darkoa's place on the list a boost for Ghana's women's game.</p>
+
+<h2>Voting closes on 20 November</h2>
+
+<p>CAF says voting runs from 5 to 20 November. CAF member associations, clubs and eligible coaches and captains take part. The awards cover 18 categories in all.</p>
+
+<p>The ceremony will be held on Wednesday, 2 December, at the Professor Wole Soyinka Centre for Culture and the Arts, Lagos's National Theatre. It starts at 19:00 local time (18:00 GMT).</p>
+
+<h2>Why it matters for Nigeria</h2>
+
+<p>As host, Nigeria will have a big stage for its women's football, with a world-champion youth side and its coach on the shortlist. Whether Busari wins depends on how voters weigh a youth world title against club and senior national team success. The winners will be announced in Lagos on 2 December.</p>
+""")
+ARTICLES.insert([a["slot"] for a in ARTICLES].index("AI")+1, SPORTS)
