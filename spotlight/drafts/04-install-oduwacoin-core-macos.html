@@ -1,0 +1,98 @@
+<p>You have downloaded OduwaCoin Core and checked its SHA-256 checksum. This fourth Fintech Spotlight guide is for Mac users. It shows how to install OduwaCoin Core ETINOSA v2.0.0.3 on an Apple Silicon or Intel Mac. Allow about 15 minutes, plus time for the blockchain to sync.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>A Mac running a supported version of macOS:
+  <ul>
+  <li><strong>Apple Silicon (M1 or later):</strong> macOS 11 Big Sur or newer</li>
+  <li><strong>Intel:</strong> macOS 10.15 Catalina or newer</li>
+  </ul>
+</li>
+<li>The correct disk image from the <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">official v2.0.0.3 release page on GitHub</a>, checked against <code>SHA256SUMS</code>. If you have not done this yet, start with <a href="https://fintechtelex.com/fintech-spotlight-download-oduwacoin-core-verify-sha256/">our guide to downloading and verifying OduwaCoin Core</a>.</li>
+<li>At least 5 GB of free disk space.</li>
+<li>A stable internet connection</li>
+<li>A USB drive for your wallet backup</li>
+</ul>
+
+<h2>Step 1: Find out which Mac you have</h2>
+<ol>
+<li>Click the <strong>Apple menu</strong> in the top-left corner and choose <strong>About This Mac</strong>.</li>
+<li>Look for <strong>Chip</strong>. If it says Apple M1, M2, M3, M4 or later, you have Apple Silicon.</li>
+<li>If it says <strong>Processor</strong> followed by an Intel name, you have an Intel Mac.</li>
+</ol>
+
+<h2>Step 2: Download the matching file</h2>
+<p>The release has two Mac disk images:</p>
+<ul>
+<li><code>OduwaCoin-2.0.0.3-macOS-arm64.dmg</code>: for Apple Silicon Macs</li>
+<li><code>OduwaCoin-2.0.0.3-macOS-x86_64.dmg</code>: for Intel Macs</li>
+</ul>
+<p>We inspected both: arm64 is native Apple Silicon code and x86_64 is Intel code. On Apple Silicon, use arm64; the Intel build would need Rosetta.</p>
+
+<h2>Step 3: Verify the checksum in Terminal</h2>
+<p>Open <strong>Terminal</strong> (Applications, then Utilities) and run the command for your file:</p>
+<pre><code>cd ~/Downloads
+shasum -a 256 OduwaCoin-2.0.0.3-macOS-arm64.dmg</code></pre>
+<p>For an Intel Mac, replace the file name with <code>OduwaCoin-2.0.0.3-macOS-x86_64.dmg</code>. The result must match your file's line in <code>SHA256SUMS</code>. When we wrote this guide, the values were:</p>
+<pre><code>arm64:  45c045416554e69fab3424e040eec8225110c0918fa6d71a01c856c186cfdb12
+x86_64: 95a756685d88bf89c0a8e70783dac826fad3f0119253e309c8949a37fd1aff8d</code></pre>
+<p>Always compare against <code>SHA256SUMS</code> on the official release page, not an article. If it does not match, delete the file and download again.</p>
+
+<h2>Step 4: Drag the app into Applications</h2>
+<ol>
+<li>Double-click the <code>.dmg</code> file. A window opens showing <strong>Oduwacoin-Qt</strong> and a shortcut to your <strong>Applications</strong> folder.</li>
+<li>Drag the <strong>Oduwacoin-Qt</strong> icon onto the <strong>Applications</strong> shortcut.</li>
+<li>When copying finishes, eject the disk image: click the eject icon next to it in the Finder sidebar.</li>
+</ol>
+<p>Always run the wallet from Applications, not from the disk image.</p>
+
+<h2>Step 5: Open the app for the first time</h2>
+<p>Open <strong>Applications</strong> and double-click <strong>Oduwacoin-Qt</strong>. If macOS asks whether to open an app downloaded from the internet, click <strong>Open</strong> only if your checksum matched.</p>
+<p>We checked both builds: they are signed with an Apple Developer ID certificate issued to ODUWA BLOCKCHAIN SOLUTIONS LLC. The release notes also say the Mac apps are notarized by Apple, so they should open without security warnings. If macOS says the app "is damaged" or "cannot be verified", do not override it. Delete it and download again.</p>
+
+<h2>Step 6: Choose where your data is stored</h2>
+<p>On first launch, a <strong>Welcome</strong> window asks where OduwaCoin Core should keep its data. You can choose:</p>
+<ul>
+<li><strong>Use the default data directory</strong>: recommended for most people. On a Mac this is <code>~/Library/Application Support/OduwaCoin</code>, according to the OduwaCoin Core source code.</li>
+<li><strong>Use a custom data directory</strong>: useful if your internal drive is nearly full.</li>
+</ul>
+<p>This folder holds the blockchain and your <code>wallet.dat</code> file. Library is hidden by default; to open it, go to Finder, choose <strong>Go</strong>, then <strong>Go to Folder</strong> (Shift + Command + G), and paste the path above.</p>
+
+<h2>Step 7: Allow connections and let it sync</h2>
+<p>If the macOS firewall asks whether to allow incoming connections, click <strong>Allow</strong>. The wallet then downloads the blockchain and shows the blocks left and time remaining.</p>
+<p>The v2.0.0.3 release also offers a verified blockchain bootstrap, <code>OduwaCoin-DB.zip</code> (1.62 GB, blocks up to height 2,514,711), that lets you skip most of the download. A later Spotlight guide covers it step by step.</p>
+
+<h2>Step 8: Back up your wallet right away</h2>
+<ol>
+<li>In the menu bar, click <strong>File</strong> and choose <strong>Backup Wallet</strong>.</li>
+<li>Save the copy to a USB drive or other storage that is not on the same Mac.</li>
+<li>Keep at least one backup offline.</li>
+</ol>
+<p>Without a backup, coins in a lost wallet cannot be recovered. Encrypting the wallet with a passphrase is covered in a later guide.</p>
+
+<h2>Upgrading from v2.0.0.2</h2>
+<p>The release notes say existing <code>wallet.dat</code> files work unchanged. Back up your wallet, quit the old app (Command + Q), drag the new Oduwacoin-Qt into Applications, choose <strong>Replace</strong> and open it. Your data directory stays the same.</p>
+
+<h2>Troubleshooting</h2>
+<p><strong>"This app can't run on this Mac" or it runs slowly:</strong> you may have the wrong build. Check your chip in Step 1 and download the matching file.</p>
+<p><strong>The app will not open on an older Mac:</strong> the Intel build needs macOS 10.15 or newer, and the Apple Silicon build needs macOS 11 or newer.</p>
+<p><strong>No network connections:</strong> check your internet connection and the macOS firewall settings.</p>
+<p><strong>Not enough disk space:</strong> free up space or choose a custom data directory on a larger drive at the Welcome screen.</p>
+
+<h2>Safety checklist</h2>
+<ul>
+<li>Download only from github.com/ODUWAX/oduwacoin and always verify the checksum.</li>
+<li>Never share your private keys, <code>wallet.dat</code> file or passphrase with anyone, including people claiming to be support staff.</li>
+<li>Keep regular, offline backups of <code>wallet.dat</code>.</li>
+</ul>
+
+<h2>FAQ</h2>
+<p><strong>Do I need the arm64 or the x86_64 file?</strong><br>Use arm64 for Apple Silicon (M1 and later) and x86_64 for Intel Macs. Step 1 shows how to check.</p>
+<p><strong>Where is my wallet file on a Mac?</strong><br>By default it is inside <code>~/Library/Application Support/OduwaCoin</code>. Use Finder's Go to Folder (Shift + Command + G) to open it.</p>
+<p><strong>Can I move my wallet from Windows to a Mac?</strong><br>Yes, the <code>wallet.dat</code> format is the same on both. Restoring a backup involves replacing files in the data directory, so a later Spotlight guide covers it step by step. Until then, keep your Windows wallet and its backup untouched.</p>
+
+<h2>What's next</h2>
+<p>Next in the series: installing OduwaCoin Core on Linux, covering both desktop users and Ubuntu servers. Windows users can follow <a href="https://fintechtelex.com/fintech-spotlight-install-oduwacoin-core-windows/">our Windows installation guide</a>.</p>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
