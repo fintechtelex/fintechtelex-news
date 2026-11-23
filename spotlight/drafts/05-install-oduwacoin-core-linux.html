@@ -1,0 +1,91 @@
+<p>This fifth Fintech Spotlight guide is for Linux users. It covers two setups: the OduwaCoin Core desktop wallet on a Linux PC, and the command-line node (<code>oduwacoind</code>) on an Ubuntu server. Both use the official ETINOSA v2.0.0.3 release. Allow about 15 minutes, plus time for the blockchain to sync.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>A 64-bit (x86_64) Linux computer. The release notes list Ubuntu 20.04 or newer "and similar" distributions.</li>
+<li>One of the two Linux files from the <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">official v2.0.0.3 release page on GitHub</a>:
+  <ul>
+  <li><code>OduwaCoin-2.0.0.3-linux.tar.gz</code> (27.3 MB): the desktop wallet app plus the daemon, for Linux PCs</li>
+  <li><code>OduwaCoin-2.0.0.3-ubuntu-daemon.tar.gz</code> (10.4 MB): command-line tools only, for Linux servers</li>
+  </ul>
+</li>
+<li>At least 5 GB of free disk space and a stable internet connection</li>
+<li>A terminal, and a USB drive or other safe place for your wallet backup</li>
+</ul>
+<p>New to verifying downloads? Read <a href="https://fintechtelex.com/fintech-spotlight-download-oduwacoin-core-verify-sha256/">our guide to downloading and verifying OduwaCoin Core</a> first.</p>
+
+<h2>Step 1: Make a folder and download the file</h2>
+<p>Both archives unpack their files straight into the current folder, with no subfolder of their own. So create a dedicated folder first:</p>
+<pre><code>mkdir -p ~/oduwacoin &amp;&amp; cd ~/oduwacoin</code></pre>
+<p>Then download your file and the checksum list. For a desktop PC:</p>
+<pre><code>wget https://github.com/ODUWAX/oduwacoin/releases/download/v2.0.0.3/OduwaCoin-2.0.0.3-linux.tar.gz
+wget https://github.com/ODUWAX/oduwacoin/releases/download/v2.0.0.3/SHA256SUMS</code></pre>
+<p>For a server, replace the first file name with <code>OduwaCoin-2.0.0.3-ubuntu-daemon.tar.gz</code>.</p>
+
+<h2>Step 2: Verify the SHA-256 checksum</h2>
+<pre><code>sha256sum --ignore-missing -c SHA256SUMS</code></pre>
+<p>You should see your file name followed by <strong>OK</strong>. When we wrote this guide, the published values were:</p>
+<pre><code>linux.tar.gz:         929c072c67884225c6ef8fd07bebc50e64a703e50d3549b4ae57b9039244bb34
+ubuntu-daemon.tar.gz: 07c828554885f97a46c4d471cb656722c9dbb60708061d667c0a394e9b734741</code></pre>
+<p>Always trust <code>SHA256SUMS</code> on the official release page over any article. If the check says <strong>FAILED</strong>, delete the file and download it again.</p>
+
+<h2>Step 3: Extract the files</h2>
+<pre><code>tar -xzf OduwaCoin-2.0.0.3-linux.tar.gz
+ls</code></pre>
+<p>We checked the contents of both archives:</p>
+<ul>
+<li><strong>Desktop archive:</strong> <code>oduwacoin-qt</code> (the wallet app), <code>oduwacoind</code>, <code>oduwacoin-cli</code> and <code>oduwacoin-tx</code></li>
+<li><strong>Server archive:</strong> <code>oduwacoind</code>, <code>oduwacoin-cli</code> and <code>oduwacoin-tx</code></li>
+</ul>
+<p>Confirm the version:</p>
+<pre><code>./oduwacoind -version</code></pre>
+<p>It should report <strong>OduwaCoin Daemon version v2.0.0.3-ETINOSA</strong>.</p>
+
+<h2>Step 4 (desktop): Start the wallet app</h2>
+<pre><code>./oduwacoin-qt</code></pre>
+<p>On first launch, choose the default data directory unless your disk is nearly full. On Linux the default is <code>~/.OduwaCoin</code>, which holds the blockchain and your <code>wallet.dat</code> file. The wallet then connects to peers and begins to sync.</p>
+<p>If the app does not open on a minimal install, the release notes list these packages:</p>
+<pre><code>sudo apt-get install libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0 libfontconfig1 libfreetype6</code></pre>
+
+<h2>Step 4 (server): Start the daemon</h2>
+<pre><code>./oduwacoind -daemon</code></pre>
+<p>In our test, the daemon started without any configuration file and created <code>~/.OduwaCoin</code> automatically. Check it is running:</p>
+<pre><code>./oduwacoin-cli getinfo</code></pre>
+<p>This returns the version, block height and number of connections. Run it again after a few minutes to watch the block count rise. To shut the node down cleanly:</p>
+<pre><code>./oduwacoin-cli stop</code></pre>
+<p>Settings go in <code>~/.OduwaCoin/OduwaCoin.conf</code> if you need them later. OduwaCoin uses port <strong>26681</strong> for peer-to-peer connections and <strong>26682</strong> for RPC. Keep the RPC port closed to the internet; <code>oduwacoin-cli</code> works locally without opening it.</p>
+
+<h2>Step 5: Speed up the first sync (optional)</h2>
+<p>The release also offers a verified blockchain bootstrap, <code>OduwaCoin-DB.zip</code> (1.62 GB, blocks up to height 2,514,711). Our next Spotlight guide covers it step by step.</p>
+
+<h2>Step 6: Back up your wallet</h2>
+<p>On the desktop app, click <strong>File</strong>, then <strong>Backup Wallet</strong>, and save the copy to a USB drive. On a server, stop the node first, then copy the file:</p>
+<pre><code>./oduwacoin-cli stop
+cp ~/.OduwaCoin/wallet.dat ~/wallet-backup-$(date +%F).dat</code></pre>
+<p>Move that copy off the server to safe offline storage. Encrypting your wallet with a passphrase is covered in a later guide.</p>
+
+<h2>Upgrading from v2.0.0.2</h2>
+<p>The release notes say there are no consensus or network protocol changes, so v2.0.0.2 wallets and nodes stay compatible. Back up <code>wallet.dat</code>, stop the old wallet or daemon, extract the new files into a new folder and start them. Your data directory stays the same.</p>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Download only from github.com/ODUWAX/oduwacoin and always verify the checksum.</li>
+<li>Run the wallet as a normal user, not as root.</li>
+<li>Never share your private keys, <code>wallet.dat</code> or passphrase, including with anyone claiming to be support staff.</li>
+<li>Never expose RPC port 26682 to the internet.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>"Permission denied" when running a file:</strong> make it executable with <code>chmod +x oduwacoind oduwacoin-cli oduwacoin-qt</code>.</p>
+<p><strong>A "GLIBC" version error:</strong> your distribution is too old. The binaries need glibc 2.29 or newer, which Ubuntu 20.04 and later provide.</p>
+<p><strong>"Could not load the Qt platform plugin xcb":</strong> install the packages listed in Step 4 (desktop).</p>
+<p><strong>No connections:</strong> check your internet connection and allow outbound traffic on port 26681.</p>
+
+<h2>FAQ</h2>
+<p><strong>Which file should I download?</strong><br>Use <code>linux.tar.gz</code> if you want the graphical wallet. Use <code>ubuntu-daemon.tar.gz</code> for a headless server.</p>
+<p><strong>Where is my wallet file on Linux?</strong><br>By default it is <code>~/.OduwaCoin/wallet.dat</code>. The folder is hidden; use <code>ls -a ~</code> to see it.</p>
+<p><strong>Do I need a configuration file?</strong><br>No. The daemon runs with its defaults. Create <code>OduwaCoin.conf</code> only when you need custom settings.</p>
+<p><strong>Can I run this on a Raspberry Pi?</strong><br>Not with these files. The v2.0.0.3 Linux builds are for 64-bit x86 (Intel and AMD) machines.</p>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>

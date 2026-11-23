@@ -1,0 +1,10 @@
+{
+ "slug": "fintech-spotlight-install-oduwacoin-core-linux-ubuntu",
+ "title": "Fintech Spotlight: How to Install OduwaCoin Core on Linux Desktop and Ubuntu Server",
+ "excerpt": "Step-by-step: download OduwaCoin Core ETINOSA v2.0.0.3 for Linux, verify the SHA-256 checksum, extract it into its own folder, run the desktop wallet or the oduwacoind daemon, and back up your wallet.",
+ "category": 405,
+ "focus_keywords": "install OduwaCoin Core Linux, OduwaCoin Ubuntu server, oduwacoind daemon, ETINOSA v2.0.0.3 Linux, OWC wallet Linux",
+ "seo_title": "How to Install OduwaCoin Core on Linux and Ubuntu Server",
+ "meta_description": "How to install OduwaCoin Core v2.0.0.3 on Linux: verify the SHA-256 checksum, extract the files, run the wallet or oduwacoind daemon and back up your wallet.",
+ "tags": ["Fintech Spotlight","OduwaCoin","OWC","DIY Crypto Guide","Blockchain Tutorial","OduwaCoin Core","ETINOSA","Linux","Ubuntu","oduwacoind","Crypto Node","Wallet Backup"]
+}
