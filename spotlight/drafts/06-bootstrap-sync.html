@@ -1,0 +1,80 @@
+<p>This sixth Fintech Spotlight guide shows how to skip most of the long first sync of OduwaCoin Core. Instead of downloading every block from block 0, you load a verified snapshot of the blockchain, <code>OduwaCoin-DB.zip</code>, and let your wallet catch up only the last few days. It works on Windows, macOS and Linux, and takes about 20 to 40 minutes, most of it download time.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>OduwaCoin Core ETINOSA v2.0.0.3 installed and opened at least once. If you have not done this yet, follow our guides for <a href="https://fintechtelex.com/fintech-spotlight-install-oduwacoin-core-windows/">Windows</a>, <a href="https://fintechtelex.com/fintech-spotlight-install-oduwacoin-core-macos/">macOS</a> or <a href="https://fintechtelex.com/fintech-spotlight-install-oduwacoin-core-linux-ubuntu/">Linux</a>.</li>
+<li>The two files from the official <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/bootstrap" target="_blank" rel="noopener">bootstrap release page on GitHub</a>:
+  <ul>
+  <li><code>OduwaCoin-DB.zip</code>, the snapshot itself (about 1.55 GB when we wrote this guide)</li>
+  <li><code>OduwaCoin-DB.zip.sha256</code>, a one-line checksum file</li>
+  </ul>
+</li>
+<li>At least 5 GB of free disk space: room for the zip and the unpacked folders</li>
+<li>A stable internet connection, ideally Wi-Fi or a data bundle large enough for 1.6 GB</li>
+<li>A USB drive or other safe place for a backup of <code>wallet.dat</code></li>
+</ul>
+
+<h2>Why a bootstrap helps</h2>
+<p>A new node normally downloads and checks the whole chain, block by block, which can take a long time on a slow or expensive connection. The bootstrap is a ready-made copy of the <code>blocks</code> and <code>chainstate</code> folders, so your wallet starts close to the current height.</p>
+<p>According to the <a href="https://github.com/ODUWAX/oduwacoin#verified-blockchain-bootstrap" target="_blank" rel="noopener">OduwaCoin README</a>, the snapshot is rebuilt automatically twice a week from a cleanly stopped node, then tested offline before it is published. The release notes say each snapshot is unzipped and started offline to confirm it loads at the same block and passes <code>verifychain</code>. When we checked on 24 November 2026, the current snapshot was built on 22 November at block height 2,528,305 with OduwaCoin Daemon v2.0.0.3-ETINOSA.</p>
+<p>The bootstrap contains only blockchain data. It does not contain any wallet, keys or coins, and it never replaces your <code>wallet.dat</code>.</p>
+
+<h2>Step 1: Download the snapshot and checksum</h2>
+<p>Download both files from the bootstrap release page, or use these direct links:</p>
+<pre><code>https://github.com/ODUWAX/oduwacoin/releases/download/bootstrap/OduwaCoin-DB.zip
+https://github.com/ODUWAX/oduwacoin/releases/download/bootstrap/OduwaCoin-DB.zip.sha256</code></pre>
+
+<h2>Step 2: Verify the SHA-256 checksum</h2>
+<p>Open a terminal in the folder where the files were saved and run the command for your system:</p>
+<pre><code>Windows (PowerShell):  Get-FileHash .\OduwaCoin-DB.zip -Algorithm SHA256
+macOS:                 shasum -a 256 -c OduwaCoin-DB.zip.sha256
+Linux:                 sha256sum -c OduwaCoin-DB.zip.sha256</code></pre>
+<p>On macOS and Linux you should see <strong>OduwaCoin-DB.zip: OK</strong>. On Windows, compare the long hash on screen with the one inside <code>OduwaCoin-DB.zip.sha256</code> (open it with Notepad). Because the snapshot is replaced twice a week, the correct hash changes too. Always compare against the checksum file and the release page from the same download, never against an old article.</p>
+<p>If the values do not match, delete the zip and download it again. Do not use a file that fails the check.</p>
+
+<h2>Step 3: Close OduwaCoin Core completely</h2>
+<p>Quit the wallet (File, then Exit on Windows and Linux; Command + Q on macOS) and wait until the window has closed. If you run the daemon, stop it with:</p>
+<pre><code>./oduwacoin-cli stop</code></pre>
+<p>Replacing blockchain folders while the program is running can corrupt them.</p>
+
+<h2>Step 4: Back up wallet.dat</h2>
+<p>Open your data directory:</p>
+<ul>
+<li><strong>Windows:</strong> <code>%APPDATA%\OduwaCoin</code> (usually <code>C:\Users\YourName\AppData\Roaming\OduwaCoin</code>)</li>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/OduwaCoin</code></li>
+<li><strong>Linux:</strong> <code>~/.OduwaCoin</code> (a hidden folder)</li>
+</ul>
+<p>Copy <code>wallet.dat</code> to a USB drive or another safe location before you change anything else.</p>
+
+<h2>Step 5: Delete the old blocks and chainstate folders</h2>
+<p>In the same data directory, delete only the <code>blocks</code> and <code>chainstate</code> folders. Leave <code>wallet.dat</code>, <code>OduwaCoin.conf</code> and every other file where they are.</p>
+
+<h2>Step 6: Unzip the snapshot into the data directory</h2>
+<p>Extract <code>OduwaCoin-DB.zip</code> directly into the data directory. The zip holds two top-level folders, <code>blocks</code> and <code>chainstate</code>, so after extraction you should see them sitting next to <code>wallet.dat</code>, not inside an extra <code>OduwaCoin-DB</code> folder. On Linux:</p>
+<pre><code>unzip OduwaCoin-DB.zip -d ~/.OduwaCoin</code></pre>
+<p>On Windows, right-click the zip, choose Extract All and enter the data directory path. On macOS, double-click the zip, then drag the two folders into the data directory.</p>
+
+<h2>Step 7: Start OduwaCoin Core and let it catch up</h2>
+<p>Open the wallet as usual. It loads the snapshot, connects to peers and downloads only the blocks made since the snapshot was built. The progress bar at the bottom should start near the end rather than at zero. Your balance becomes accurate once syncing finishes.</p>
+<p>On a server, check the height with <code>./oduwacoin-cli getblockcount</code> and compare it with a public OduwaCoin block explorer.</p>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Download the bootstrap only from the official ODUWAX GitHub release page. Ignore links sent by direct message or posted in groups.</li>
+<li>Always verify the checksum before unzipping.</li>
+<li>No one needs your <code>wallet.dat</code>, private keys or passphrase to help you sync. Anyone who asks for them is trying to steal your coins.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>The wallet starts syncing from block 0 again:</strong> the folders are probably in the wrong place. Check that <code>blocks</code> and <code>chainstate</code> are directly inside the data directory.</p>
+<p><strong>"Error loading block database" or a corruption message:</strong> close the wallet, delete <code>blocks</code> and <code>chainstate</code> again, re-verify the zip and unzip it once more.</p>
+<p><strong>No connections after starting:</strong> check your internet connection and allow outbound traffic on port 26681.</p>
+
+<h2>FAQ</h2>
+<p><strong>Is the bootstrap safe to use?</strong><br>It is built and tested by the official project workflow and published with a checksum. Verifying that checksum confirms your copy matches the published file. Your node still checks new blocks as it catches up.</p>
+<p><strong>Will it change my balance or wallet?</strong><br>No. It replaces blockchain data only. Your coins are tied to the keys in <code>wallet.dat</code>, which you keep.</p>
+<p><strong>How often is it updated?</strong><br>Twice a week, according to the README. The release page shows the current height and build date.</p>
+<p><strong>Do I need it if my wallet already synced?</strong><br>No. It is most useful for new installs, a new computer or a node that has been offline for a long time.</p>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
