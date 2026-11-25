@@ -1,0 +1,23 @@
+{
+ "slug": "fintech-spotlight-back-up-restore-oduwacoin-wallet-dat",
+ "title": "Fintech Spotlight: How to Back Up and Restore Your OduwaCoin wallet.dat",
+ "excerpt": "Step-by-step: find wallet.dat on Windows, macOS or Linux, back it up with File > Backup Wallet or the backupwallet command, store copies safely, and restore it if your computer fails.",
+ "category": 405,
+ "focus_keywords": "OduwaCoin wallet backup, back up wallet.dat, restore OduwaCoin wallet, OWC wallet recovery, OduwaCoin Core wallet.dat",
+ "seo_title": "How to Back Up and Restore Your OduwaCoin wallet.dat",
+ "meta_description": "How to back up and restore your OduwaCoin wallet.dat: find the data folder, use File > Backup Wallet, keep two copies safe, then restore and rescan if needed.",
+ "tags": [
+  "Fintech Spotlight",
+  "OduwaCoin",
+  "OWC",
+  "DIY Crypto Guide",
+  "Blockchain Tutorial",
+  "OduwaCoin Core",
+  "Wallet Backup",
+  "wallet.dat",
+  "Crypto Security",
+  "Self-Custody",
+  "ETINOSA",
+  "Wallet Recovery"
+ ]
+}

@@ -1,0 +1,83 @@
+<p>This seventh Fintech Spotlight guide covers the most important habit in self-custody: keeping a safe copy of your OduwaCoin wallet. Your OWC is controlled by the private keys stored in a file called <code>wallet.dat</code>. If your computer is lost, stolen or its drive fails and you have no backup, nobody can recover those coins for you. The steps below work for OduwaCoin Core ETINOSA v2.0.0.3 on Windows, macOS and Linux.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>OduwaCoin Core ETINOSA v2.0.0.3 installed, from the official <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">GitHub release page</a></li>
+<li>At least two safe storage places, for example a USB drive kept at home and a second drive kept somewhere else</li>
+<li>Your wallet passphrase, if you have encrypted the wallet</li>
+<li>About 10 minutes</li>
+</ul>
+
+<h2>Where wallet.dat lives</h2>
+<p>OduwaCoin Core keeps <code>wallet.dat</code> in its data directory. According to the OduwaCoin Core source code, the default locations are:</p>
+<ul>
+<li><strong>Windows:</strong> <code>%APPDATA%\OduwaCoin</code> (usually <code>C:\Users\YourName\AppData\Roaming\OduwaCoin</code>)</li>
+<li><strong>macOS:</strong> <code>~/Library/Application Support/OduwaCoin</code></li>
+<li><strong>Linux:</strong> <code>~/.OduwaCoin</code></li>
+</ul>
+<p>The same folder holds the <code>blocks</code> and <code>chainstate</code> folders and the optional settings file <code>OduwaCoin.conf</code>. Only <code>wallet.dat</code> holds your keys.</p>
+
+<h2>Part A: Back up your wallet</h2>
+
+<h3>Step 1: Use the built-in backup option</h3>
+<p>Open OduwaCoin Core and choose <strong>File &gt; Backup Wallet...</strong>. In the save window, pick your USB drive or another safe folder and give the file a clear name, such as <code>owc-wallet-2026-11-25.dat</code>. The app saves it as wallet data (<code>.dat</code>).</p>
+<p>When it works, you will see the message "Backup Successful" with the location of the file. If you see "Backup Failed", check that the drive is connected and has free space, then try again.</p>
+
+<h3>Step 2 (alternative): Use the console or command line</h3>
+<p>The wallet also has a <code>backupwallet</code> command, which safely copies the current wallet file to a folder or file name you choose. In the app, open <strong>Help &gt; Debug window</strong>, go to the Console tab and type, for example:</p>
+<pre><code>backupwallet "E:\owc-wallet-2026-11-25.dat"</code></pre>
+<p>If you run the daemon on a server, use <code>./oduwacoin-cli backupwallet "/home/you/backups/owc-wallet.dat"</code> and then copy the file off the server.</p>
+
+<h3>Step 3: Make a second copy and store it safely</h3>
+<ul>
+<li>Keep at least two copies in different physical places.</li>
+<li>Do not keep your only backup on the same computer as the wallet.</li>
+<li>If you use cloud storage, encrypt the wallet with a passphrase first (<strong>Settings &gt; Encrypt Wallet...</strong>).</li>
+<li>Write the passphrase down on paper and store it separately from the backup file.</li>
+</ul>
+
+<h3>Step 4: Refresh your backup regularly</h3>
+<p>By default the wallet prepares a pool of 100 future keys in advance (the default keypool size in the source code), so a backup also covers addresses you create soon after it. If you create many new addresses, change your passphrase or start staking from a new address, make a fresh backup.</p>
+
+<h2>Part B: Restore your wallet</h2>
+
+<h3>Step 1: Close OduwaCoin Core completely</h3>
+<p>Use <strong>File &gt; Exit</strong> on Windows or Linux, or <strong>Command + Q</strong> on macOS. On a server, run <code>./oduwacoin-cli stop</code>. Wait until the program has fully shut down. The project README also advises fully stopping OduwaCoin Core before replacing data folders.</p>
+
+<h3>Step 2: Keep the current wallet file</h3>
+<p>Open the data directory and rename the existing <code>wallet.dat</code> to something like <code>wallet-old.dat</code>. Do not delete it. It may still hold keys you need.</p>
+
+<h3>Step 3: Copy in your backup</h3>
+<p>Copy your backup file into the data directory and rename it exactly <code>wallet.dat</code>.</p>
+
+<h3>Step 4: Start OduwaCoin Core and check your balance</h3>
+<p>Start the wallet and let it finish syncing with the network. Your addresses and balance should appear once it is up to date.</p>
+<p>If the balance looks wrong after a full sync, close the wallet and start it once with the <code>-rescan</code> option, which the program describes as "Rescan the block chain for missing wallet transactions on startup". For example, on Linux: <code>./oduwacoin-qt -rescan</code>. Rescanning can take a while.</p>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Never send <code>wallet.dat</code>, your passphrase or private keys to anyone. Real support staff will never ask for them.</li>
+<li>Be careful with the <code>dumpwallet</code> command. It writes all your keys to a plain-text file that anyone can read. Only use it if you understand the risk, and delete the file securely afterwards.</li>
+<li>Test your backup once by restoring it on a spare computer or after a reinstall, so you know it works before you ever need it.</li>
+<li>Download OduwaCoin Core only from the official GitHub release page and check the SHA-256 checksum.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>The backup option is greyed out:</strong> the wallet may still be loading. Wait until the main window has opened fully.</p>
+<p><strong>The wallet will not start after restoring:</strong> make sure the file is named exactly <code>wallet.dat</code> and is in the data directory, not inside a subfolder. If the file is damaged, the program has a <code>-salvagewallet</code> option that attempts to recover private keys from a corrupt wallet. Work only on a copy.</p>
+<p><strong>Balance shows zero:</strong> wait for the sync to finish, then try <code>-rescan</code> as described in Part B.</p>
+
+<h2>FAQ</h2>
+<p><strong>Does a backup copy my coins?</strong><br>No. Coins live on the blockchain. The backup protects the keys that let you spend them.</p>
+<p><strong>Will my existing wallet.dat work after upgrading to v2.0.0.3?</strong><br>Yes. The v2.0.0.3 release notes say existing <code>wallet.dat</code> files work unchanged.</p>
+<p><strong>How often should I back up?</strong><br>After you first set up the wallet, after encrypting or changing the passphrase, and whenever you have created many new addresses.</p>
+<p><strong>Does the blockchain bootstrap replace my wallet?</strong><br>No. As our <a href="https://fintechtelex.com/fintech-spotlight-sync-oduwacoin-blockchain-bootstrap/">bootstrap guide</a> explains, it replaces only blockchain data. Back up <code>wallet.dat</code> before using it anyway.</p>
+
+<h2>Official links</h2>
+<ul>
+<li><a href="https://github.com/ODUWAX/oduwacoin" target="_blank" rel="noopener">OduwaCoin Core on GitHub</a></li>
+<li><a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">ETINOSA v2.0.0.3 release notes and downloads</a></li>
+</ul>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
