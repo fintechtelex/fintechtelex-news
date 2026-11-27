@@ -1,0 +1,94 @@
+<p>This ninth Fintech Spotlight guide shows you how to receive OWC safely. To get paid, you need an address: a string of letters and numbers that you give to the sender. OduwaCoin Core can create as many addresses as you like, and lets you attach a private label to each one so you always know who paid you and why. These steps work for OduwaCoin Core ETINOSA v2.0.0.3 on Windows, macOS and Linux.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>OduwaCoin Core ETINOSA v2.0.0.3 installed, from the official <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">GitHub release page</a></li>
+<li>A wallet that has finished syncing (see our <a href="https://fintechtelex.com/fintech-spotlight-sync-oduwacoin-blockchain-bootstrap/">sync guide</a>), so incoming payments show up correctly</li>
+<li>A recent backup of your <code>wallet.dat</code> (see our <a href="https://fintechtelex.com/fintech-spotlight-back-up-restore-oduwacoin-wallet-dat/">backup and restore guide</a>)</li>
+</ul>
+
+<h2>Before you start: how OWC addresses work</h2>
+<p>An address is safe to share. It lets people send coins to you, but it cannot be used to spend them. Only your wallet's private keys, protected by your passphrase if you followed our <a href="https://fintechtelex.com/fintech-spotlight-encrypt-oduwacoin-wallet-passphrase/">encryption guide</a>, can do that.</p>
+<p>Standard OduwaCoin addresses start with the capital letter <strong>A</strong>. Payment links use the <code>oduwacoin:</code> prefix.</p>
+<p>Labels are private notes. They are stored in your own wallet file and are not sent to the sender or written to the blockchain.</p>
+
+<h2>Part A: Create a new receiving address</h2>
+
+<h3>Step 1: Open the Receive tab</h3>
+<p>In OduwaCoin Core, click <strong>Receive</strong> on the toolbar. Its description reads "Request payments (generates QR codes and oduwacoin: URIs)". The window explains: "Use this form to request payments. All fields are optional."</p>
+
+<h3>Step 2: Add a label</h3>
+<p>In the <strong>Label</strong> box, type a short name for this payment, such as "Ada – invoice 014" or "Staking pool payout". The tooltip describes this as "An optional label to associate with the new receiving address."</p>
+
+<h3>Step 3: Add an amount and message (optional)</h3>
+<p>If you want a specific amount, enter it in <strong>Amount</strong>. Leave it empty or zero if the sender can choose. You can also add a <strong>Message</strong>. The wallet warns that the message is shown when the request is opened but is not sent with the payment over the network.</p>
+
+<h3>Step 4: Leave "Reuse" unticked</h3>
+<p>Make sure <strong>Reuse an existing receiving address (not recommended)</strong> is unticked. The wallet explains that reusing addresses has security and privacy issues, and should only be used when re-creating an earlier payment request.</p>
+
+<h3>Step 5: Click Request payment</h3>
+<p>Click <strong>Request payment</strong>. The wallet creates a brand-new address and opens a window titled "Request payment to …" showing the payment information: the URI, the address, and any amount, label and message you entered. If your build includes QR support, a QR code also appears.</p>
+
+<h2>Part B: Share the address safely</h2>
+
+<h3>Step 6: Copy or save</h3>
+<p>Use the buttons at the bottom of the window:</p>
+<ul>
+<li><strong>Copy Address</strong> copies just the address.</li>
+<li><strong>Copy URI</strong> copies a full <code>oduwacoin:</code> payment link that can include the amount.</li>
+<li><strong>Save Image...</strong> saves the QR code as a PNG file, where available.</li>
+</ul>
+
+<h3>Step 7: Check before you send it</h3>
+<p>After pasting, compare the first and last six characters with the address in your wallet, because some malware swaps copied addresses.</p>
+
+<h3>Step 8: Find the request again later</h3>
+<p>Every request you create appears under <strong>Requested payments history</strong> on the Receive tab. Select one and click <strong>Show</strong> (or double-click it) to open it again. <strong>Remove</strong> deletes the entry from this list only; it does not delete the address from your wallet.</p>
+
+<h2>Part C: Manage your receiving addresses and labels</h2>
+
+<h3>Step 9: Open Receiving addresses</h3>
+<p>Open the <strong>File</strong> menu and choose <strong>Receiving addresses...</strong>. The window lists your addresses and labels and notes: "It is recommended to use a new receiving address for each transaction."</p>
+
+<h3>Step 10: Create, edit or export</h3>
+<ul>
+<li><strong>New</strong> creates another receiving address. You will be asked for a label.</li>
+<li>Right-click an address and choose <strong>Edit</strong> to change its label. For receiving addresses, only the label can be changed, not the address itself.</li>
+<li><strong>Copy</strong> copies the selected address. Right-click also offers Copy Address and Copy Label.</li>
+<li><strong>Export</strong> saves the list as a comma-separated (.csv) file, useful for bookkeeping.</li>
+</ul>
+
+<h2>Advanced: the command line</h2>
+<p>If you run the wallet from the console (Help &gt; Debug window &gt; Console) or <code>oduwacoin-cli</code>, these commands do the same job:</p>
+<ul>
+<li><code>getnewaddress "label"</code> creates a new address under a label (the wallet calls it an "account").</li>
+<li><code>setaccount "address" "label"</code> changes the label on an existing address.</li>
+<li><code>getreceivedbyaddress "address"</code> shows how much an address has received.</li>
+<li><code>listreceivedbyaddress</code> lists amounts received per address.</li>
+</ul>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Use a new address for each payer or invoice. It protects your privacy and makes reconciliation easier.</li>
+<li>Only share addresses from your own wallet. Never accept an address someone else "pre-made" for you.</li>
+<li>Back up your wallet again after creating many new addresses, so your backup covers them.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>"Could not unlock wallet."</strong> This can appear when you create a new address in an encrypted wallet and the passphrase is not entered. Enter your passphrase when prompted, then try again.</p>
+<p><strong>"New key generation failed."</strong> The wallet could not create a new key. Unlock the wallet, restart OduwaCoin Core and try again. If it persists, check that your disk is not full.</p>
+<p><strong>Payment not showing:</strong> wait for your wallet to finish syncing, then check the Transactions tab. Ask the sender for their transaction ID to confirm it was broadcast.</p>
+
+<h2>FAQ</h2>
+<p><strong>Can the sender see my label?</strong><br>No. Labels stay in your wallet file. Only the message in a payment URI is visible to someone who opens the link.</p>
+<p><strong>Is there a limit to how many addresses I can create?</strong><br>No practical limit. All of them belong to the same wallet and add up to one balance.</p>
+<p><strong>Do old addresses stop working?</strong><br>No. Coins sent to any of your addresses will still arrive, which is why receiving addresses cannot be deleted.</p>
+
+<h2>Official links</h2>
+<ul>
+<li><a href="https://github.com/ODUWAX/oduwacoin" target="_blank" rel="noopener">OduwaCoin Core on GitHub</a></li>
+<li><a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">ETINOSA v2.0.0.3 release notes and downloads</a></li>
+</ul>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
