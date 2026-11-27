@@ -1,0 +1,76 @@
+<p>This eighth Fintech Spotlight guide shows you how to lock your OduwaCoin wallet with a passphrase. By default, the private keys in <code>wallet.dat</code> are stored unencrypted. Anyone who gets a copy of that file, from a stolen laptop, a shared computer or an unprotected backup, could spend your OWC. Encryption means the file is useless without your passphrase. The steps below work for OduwaCoin Core ETINOSA v2.0.0.3 on Windows, macOS and Linux.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>OduwaCoin Core ETINOSA v2.0.0.3 installed, from the official <a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">GitHub release page</a></li>
+<li>A fresh backup of your current <code>wallet.dat</code> (see our <a href="https://fintechtelex.com/fintech-spotlight-back-up-restore-oduwacoin-wallet-dat/">backup and restore guide</a>)</li>
+<li>A pen and paper to write down your passphrase</li>
+<li>About 10 minutes, plus a few minutes for the wallet to restart</li>
+</ul>
+
+<h2>Before you start: why the passphrase matters</h2>
+<p>Encryption protects you if someone copies your wallet file. It also creates a new risk: if you forget the passphrase, nobody can recover your coins. The wallet itself warns you that if you encrypt your wallet and lose your passphrase, you will lose all of your coins.</p>
+
+<h2>Part A: Encrypt your wallet</h2>
+
+<h3>Step 1: Choose a strong passphrase</h3>
+<p>The wallet advises: "Please use a passphrase of ten or more random characters, or eight or more words." A string of eight random, unrelated words is easier to remember than a jumble of symbols and is still very strong.</p>
+<p>Write the passphrase on paper and store it somewhere safe and separate from your backup files.</p>
+
+<h3>Step 2: Open the Encrypt Wallet window</h3>
+<p>In OduwaCoin Core, open the <strong>Settings</strong> menu and choose <strong>Encrypt Wallet...</strong>. Its description reads "Encrypt the private keys that belong to your wallet".</p>
+
+<h3>Step 3: Enter and repeat the passphrase</h3>
+<p>The "Encrypt wallet" window has two boxes: <strong>New passphrase</strong> and <strong>Repeat new passphrase</strong>. Type the same passphrase in both. You can tick <strong>Show password</strong> to check for typing mistakes, but only when nobody can see your screen. If the app shows "Warning: The Caps Lock key is on!", turn Caps Lock off before continuing.</p>
+
+<h3>Step 4: Confirm</h3>
+<p>Click OK. A "Confirm wallet encryption" message repeats the warning about losing your passphrase and asks, "Are you sure you wish to encrypt your wallet?" Click <strong>Yes</strong> only if your passphrase is written down.</p>
+
+<h3>Step 5: Let the wallet restart</h3>
+<p>When you see "Wallet encrypted", the app explains that it will close to finish the encryption process. Start OduwaCoin Core again. The status bar will show that the wallet is encrypted and currently locked.</p>
+
+<h3>Step 6: Replace your old backups</h3>
+<p>This step is easy to miss. The wallet warns that any previous backups should be replaced with the newly generated, encrypted wallet file, because previous backups of the unencrypted file will become useless once you start using the encrypted wallet. Make a new backup with <strong>File &gt; Backup Wallet...</strong> and securely delete the old unencrypted copies.</p>
+
+<h2>Part B: Daily use after encryption</h2>
+
+<h3>Sending OWC</h3>
+<p>When you send coins, the wallet asks for your passphrase to unlock the keys for that transaction.</p>
+
+<h3>Staking while locked</h3>
+<p>Staking needs the wallet to be unlocked, but you do not have to unlock it for spending. Choose <strong>Settings &gt; Unlock Wallet...</strong> and tick <strong>Tick for staking only</strong> before entering your passphrase. The wallet can then stake, but if anyone tries to send coins it refuses with "Wallet unlocked for staking only, unable to create transaction." Use <strong>Settings &gt; Lock Wallet</strong> to lock it again.</p>
+<p>On a server, the command is <code>walletpassphrase "your passphrase" 99999999 true</code>, where the number is the unlock time in seconds and <code>true</code> means staking only. Use <code>walletlock</code> to lock it.</p>
+
+<h3>Changing your passphrase</h3>
+<p>Choose <strong>Settings &gt; Change Passphrase...</strong>, enter the old passphrase and the new one twice. You should see "Wallet passphrase was successfully changed." On a server, use <code>walletpassphrasechange "old" "new"</code>. Write the new passphrase down and make a fresh backup.</p>
+
+<h2>Command-line option</h2>
+<p>If you run the daemon, you can encrypt with <code>./oduwacoin-cli encryptwallet "your passphrase"</code>. This works only on a wallet that has never been encrypted, and it shuts the server down when it finishes, so restart it afterwards. Be aware that commands typed at a terminal may be saved in your shell history, so clear it afterwards or use the graphical wallet.</p>
+
+<h2>Safety tips</h2>
+<ul>
+<li>Never share your passphrase. Real support staff will never ask for it.</li>
+<li>The wallet itself notes that encryption cannot fully protect your coins from malware. Keep your computer updated and avoid pirated software.</li>
+<li>Test the passphrase once by locking and unlocking the wallet before you move large amounts.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<p><strong>"The supplied passphrases do not match."</strong> The two boxes were different. Type both again slowly, or use Show password to check.</p>
+<p><strong>"The passphrase entered for the wallet decryption was incorrect."</strong> Check Caps Lock and keyboard language, then try the exact passphrase you wrote down.</p>
+<p><strong>Encrypt Wallet is greyed out:</strong> the wallet is probably already encrypted. Use Change Passphrase instead.</p>
+<p><strong>Staking stopped after a restart:</strong> the wallet locks again when it restarts. Unlock it for staking only.</p>
+
+<h2>FAQ</h2>
+<p><strong>Can I remove encryption later?</strong><br>No. Once encrypted, the Encrypt Wallet option is disabled and the current version does not support decrypting. Plan to keep it encrypted.</p>
+<p><strong>Does encryption affect my balance or staking rewards?</strong><br>No. It only protects the keys. Your coins stay on the blockchain.</p>
+<p><strong>Do I still need backups?</strong><br>Yes. Encryption protects against theft of the file; backups protect against losing it. You need both.</p>
+<p><strong>What if I forget my passphrase?</strong><br>There is no way to recover it. That is why writing it down and storing it safely is part of the process.</p>
+
+<h2>Official links</h2>
+<ul>
+<li><a href="https://github.com/ODUWAX/oduwacoin" target="_blank" rel="noopener">OduwaCoin Core on GitHub</a></li>
+<li><a href="https://github.com/ODUWAX/oduwacoin/releases/tag/v2.0.0.3" target="_blank" rel="noopener">ETINOSA v2.0.0.3 release notes and downloads</a></li>
+</ul>
+
+<p><em>Risk note: Crypto assets are volatile. This guide is educational and not investment advice.</em></p>
+<p><em>Disclosure: Fintech Telex and OduwaCoin share common ownership.</em></p>
